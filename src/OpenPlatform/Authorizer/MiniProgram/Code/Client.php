@@ -144,6 +144,18 @@ class Client extends BaseClient
 
     /**
      * @return array|\EasyWeChat\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @throws \EasyWeChat\Kernel\Exceptions\InvalidConfigException
+     * @author zixinit
+     */
+    public function getRollbackRelease()
+    {
+        return $this->httpGet('wxa/revertcoderelease', [
+            'action' => 'get_history_version',
+        ]);
+    }
+
+    /**
+     * @return array|\EasyWeChat\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      *
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
