@@ -11,6 +11,8 @@
 
 namespace EasyWeChat\OpenPlatform\Authorizer\Aggregate;
 
+use EasyWeChat\Kernel\BaseClient;
+use EasyWeChat\OpenPlatform\Authorizer\Aggregate\Account\Client;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
@@ -18,5 +20,8 @@ class AggregateServiceProvider implements ServiceProviderInterface
 {
     public function register(Container $app)
     {
+        $app['open'] = function ($app) {
+            return new Client($app);
+        };
     }
 }
